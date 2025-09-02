@@ -22,4 +22,5 @@ It allows you to create weapons with custom properties , These are not persisten
 
 ## Permissions
 |Command|Permission group|Name in code|
+|---|---|---|
 |/sitem|tshock.item.spawn|Permissions.item|
