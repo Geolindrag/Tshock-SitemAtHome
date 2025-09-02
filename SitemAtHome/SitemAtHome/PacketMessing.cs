@@ -24,7 +24,7 @@ namespace SitemAtHome
         {
             Commands.ChatCommands.Add(
                 new Command(
-                    Permissions.canchat, sitem, "sitem"
+                    Permissions.item, sitem, "sitem"
                 )
                 {
                     HelpText = "/sitem \"WEAPON NAME\" -Parameter -Value -Parameter -Value ...\nValid parameters :\n-d set damage (integer)\t-k set knockback (decimal)\n-ua Animation time (integer)\t-ut Usage time (integer)\n-s Projectile to shoot (Proj ID)\t-ss Projectile speed (integer)\n-sc Weapon scale (Decimal)\t-amt Amount of the item to give (int)\n-a Makes an item to be considered as ammo (AmmoID)\t-uam Ammo type consummed when shot (AmmoID)\n-na Enabling it makes that an ammo type can't go into the ammo slots (0/1)"
@@ -140,4 +140,5 @@ namespace SitemAtHome
             TSPlayer.All.SendData(PacketTypes.TweakItem, string.Empty, iIndex,255,63);//Make the clients know that we did some stuff to the item
         }
     }
+
 }
