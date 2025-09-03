@@ -5,7 +5,9 @@ It allows you to create weapons with custom properties , These are not persisten
 **NOTE : The command may work successfully ,but the newly spawneed weapon may break and spawn unmodified, Try standing in the floor or just running the cmd again, So prefferably CTRL+C your command before sending it**
 
 ## Usage
-"/sitem \"WEAPON NAME\" -Parameter -Value -Parameter -Value ...
+/sitem \"WEAPON NAME\" -Parameter Value -Parameter Value ...
+Example
+/sitem "Ice blade" -d 64 -sc 9.5 -ua 6 -ut 6
 |Parameters|Description|
 |---|---|
 |-d| set damage (integer)|
