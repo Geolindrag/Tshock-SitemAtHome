@@ -1,4 +1,5 @@
 # Tshock-SitemAtHome
+# CURRENTLY THIS IS ONLY SUPPORTED BY TShock v5.1.3.0 , NEW BINARIES/FRAMEWORK UPDATE WILL BE DONE IN A FEW DAYS
 A Tshock Plugin that mimics the /Sitem function from the Dark Gaming Terraria server
 
 It allows you to create weapons with custom properties , These are not persistent thru savin
