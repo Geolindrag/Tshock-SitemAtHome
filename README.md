@@ -5,11 +5,13 @@ Updated for TShock 6.1.0.0
 It allows you to create weapons with custom properties , These are not persistent thru saving
 
 ## Usage
-/sitem \"WEAPON NAME\" -Parameter Value -Parameter Value ...
+/sitem \"WEAPON NAME\" -Parameter <Value> -Parameter <Value> ...
 Example
-/sitem "Ice blade" -d 64 -sc 9.5 -ua 6 -ut 6
+/sitem "Ice blade" -d 64 -sc 9.5 -ua 6 -ut 6 -c FF0040
 |Parameters|Description|
 |---|---|
+|-p| Set a prefix (PrefixID)|
+|-c| Change the weapon color (HexRGB) ie: FF0040|
 |-d| set damage (integer)|
 |-k| set knockback (decimal)|
 |-ua| Animation time (integer)|
