@@ -1,6 +1,7 @@
 ﻿using IL.Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using On.Terraria.DataStructures;
+using System.Globalization;
 using Terraria;
 using Terraria.DataStructures;
 using TerrariaApi.Server;
@@ -14,7 +15,7 @@ namespace SitemAtHome
     public class SitemAtHome : TerrariaPlugin
     {
         public override string Name => "Sitem At home";
-        public override Version Version => new Version(2, 0, 0);
+        public override Version Version => new Version(3, 0, 7);
         public override string Author => "Geolindrag";
         public override string Description => "Mimics Sitem from Dark gaming";
 
@@ -27,7 +28,7 @@ namespace SitemAtHome
                     Permissions.item, sitem, "sitem"
                 )
                 {
-                    HelpText = "/sitem \"WEAPON NAME\" -Parameter Value -Parameter Value ...\nValid parameters :\n-d set damage (integer)\t-k set knockback (decimal)\n-ua Animation time (integer)\t-ut Usage time (integer)\n-s Projectile to shoot (Proj ID)\t-ss Projectile speed (integer)\n-sc Weapon scale (Decimal)\t-amt Amount of the item to give (int)\n-a Makes an item to be considered as ammo (AmmoID)\t-uam Ammo type consummed when shot (AmmoID)\n-na Enabling it makes that an ammo type can't go into the ammo slots (0/1)"
+                    HelpText = "/sitem \"WEAPON NAME\" -Parameter <Value> -Parameter <Value> ...\nValid parameters :\n-p Sets a prefix (PrefixID)\t-c sets color (HEX RGB)Ie: FF0040\n-d set damage (integer)\t-k set knockback (decimal)\n-ua Animation time (integer)\t-ut Usage time (integer)\n-s Projectile to shoot (Proj ID)\t-ss Projectile speed (integer)\n-sc Weapon scale (Decimal)\t-amt Amount of the item to give (int)\n-a Makes an item to be considered as ammo (AmmoID)\t-uam Ammo type consummed when shot (AmmoID)\n-na Enabling it makes that an ammo type can't go into the ammo slots (0/1)\n Example : /Sitem \"Ice Blade\" -ua 5 -ut 5"
                 }
             );
         }
@@ -36,6 +37,8 @@ namespace SitemAtHome
         {
             bool failure = false;
             int amt = 1;
+            string clr = string.Empty;
+            string dummyStr = string.Empty;
             if (args.Parameters.Count <= 1) //checks to make sure the cmd isn't messed up
             {
                 args.Player.SendErrorMessage("No parameters set, Check /help sitem");
@@ -68,11 +71,38 @@ namespace SitemAtHome
             for (int i = 1; i < args.Parameters.Count; i += 2)
             {
                 if (!int.TryParse(args.Parameters[i + 1], out int result) & !float.TryParse(args.Parameters[i + 1], out float result2)) {//check that the values provided are actually values
-                    args.Player.SendErrorMessage("Invalid value for parameter {0}(n° {1}), recieved {2}", args.Parameters[i],(i+1)/2, args.Parameters[i + 1]);
-                    failure = true;//We dont return inmediatly, but set a flag, so all misstakes are made known
+                    if (args.Parameters[i] == "-c"&& args.Parameters[i + 1].Length == 6)//if its a string, check that follows HexRGB format
+                    {
+                       
+                        clr = args.Parameters[i + 1].ToString();
+
+                        if (!int.TryParse(clr, System.Globalization.NumberStyles.HexNumber,null,out int dummyVal))
+                        {
+                                failure = true;
+                        } 
+                        if (failure==false)
+                        {
+                            itm.color = new Color(int.Parse(clr.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), int.Parse(clr.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), int.Parse(clr.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+                        }
+                        else
+                        {
+                            args.Player.SendErrorMessage("Your color code is invalid, Make sure its in HEX , I.E: -c FF0040");
+                        }
+                    }
+                    else //if its just trash
+                    {
+
+                        args.Player.SendErrorMessage("Invalid value for parameter {0}(n° {1}), recieved {2}", args.Parameters[i], (i + 1) / 2, args.Parameters[i + 1]);
+                        failure = true;//We dont return inmediatly, but set a flag, so all mistakes are made known
+                    }
                 }
                 switch (args.Parameters[i])
                 {
+                    case "-c":
+                        break;
+                    case "-p":
+                        itm.prefix = (byte)result;
+                        break;
                     case "-d":
                         itm.damage = result;
                         break;
@@ -117,10 +147,12 @@ namespace SitemAtHome
             }
             if (failure == true) return; //after we made known all what was bad, return
             //Create an item into the game and get its internal ID
-            int iIndex = Item.NewItem(Projectile.GetNoneSource(), new Vector2(plr.X, plr.Y), new Vector2(itm.height, itm.width), itm.type, amt, false, 0, true);
+            int iIndex = Item.NewItem(Projectile.GetNoneSource(), (int)plr.X, (int)plr.Y, itm.height, itm.width, itm.type, amt);
+            //int iIndex = Item.NewItem(Projectile.GetNoneSource(), new Vector2(plr.X, plr.Y), new Vector2(itm.height, itm.width), itm.type, amt, false, 0, true);
             WorldItem modItm = Main.item[iIndex]; //only thing it changed, is that now it needs to call it from this.inner.<VALUE>
             modItm.playerIndexTheItemIsReservedFor = plr.Index;
             //and start filling it with our modded template
+            modItm.inner.prefix = itm.prefix;
             modItm.inner.color = itm.color;
             modItm.inner.damage = itm.damage;
             modItm.inner.knockBack = itm.knockBack;

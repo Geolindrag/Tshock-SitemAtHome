@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YRHS0tC4jWc=",
+  "dgSpecHash": "VBVPngfLyHU=",
   "success": true,
   "projectFilePath": "C:\\Users\\Geolindrag\\repos\\published\\SitemAtHomev2\\SitemAtHome\\SitemAtHome.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "C:\\Users\\Geolindrag\\.nuget\\packages\\nuget.packaging\\6.13.2\\nuget.packaging.6.13.2.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\nuget.protocol\\6.13.2\\nuget.protocol.6.13.2.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\nuget.versioning\\6.13.2\\nuget.versioning.6.13.2.nupkg.sha512",
-    "C:\\Users\\Geolindrag\\.nuget\\packages\\otapi.upcoming\\3.3.11\\otapi.upcoming.3.3.11.nupkg.sha512",
+    "C:\\Users\\Geolindrag\\.nuget\\packages\\otapi.upcoming\\3.3.14\\otapi.upcoming.3.3.14.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
@@ -86,8 +86,8 @@
     "C:\\Users\\Geolindrag\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Geolindrag\\.nuget\\packages\\tsapi\\6.1.0\\tsapi.6.1.0.nupkg.sha512",
-    "C:\\Users\\Geolindrag\\.nuget\\packages\\tshock\\6.1.0\\tshock.6.1.0.nupkg.sha512",
+    "C:\\Users\\Geolindrag\\.nuget\\packages\\tsapi\\6.2.1\\tsapi.6.2.1.nupkg.sha512",
+    "C:\\Users\\Geolindrag\\.nuget\\packages\\tshock\\6.2.1\\tshock.6.2.1.nupkg.sha512",
     "C:\\Users\\Geolindrag\\.nuget\\packages\\zstdsharp.port\\0.8.0\\zstdsharp.port.0.8.0.nupkg.sha512"
   ],
   "logs": []
